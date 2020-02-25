@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.64.0" />
-  <link rel="canonical" href="https://millenito.github.io/tags/tutorial/">
+  <link rel="canonical" href="https://millenito.github.io/mengenal-shell-script-variable/">
 
   
 
@@ -32,7 +32,7 @@
 
   
   
-  <title>tutorial | Lord Maxie Millenito</title>
+  <title>Mengenal Shell Script: Variable | Lord Maxie Millenito</title>
 </head>
 
   <body>
@@ -210,7 +210,7 @@
       
       
       
-      <a href="/post/" >
+      <a href="/post/" aria-current="page">
         <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
           <use xlink:href="#bookmark"></use>
         </svg>
@@ -223,7 +223,7 @@
       
       
       
-      <a href="/tags/" aria-current="page">
+      <a href="/tags/" >
         <svg class="bookmark-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
           <use xlink:href="#bookmark"></use>
         </svg>
@@ -266,23 +266,201 @@
         <div>
           
   <main id="main">
-    <h1>tutorial</h1>
-    <ul class="patterns-list">
+    <h1>
+      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      Mengenal Shell Script: Variable
+    </h1>
+
+    <div class="date">
+      
+      
+      <strong aria-hidden="true">Publish date: </strong>9 Feb, 2020
+      
+        
+      
+    </div>
+
     
-      <li>
-        <h2>
-          <a href="https://millenito.github.io/mengenal-shell-script-variable/">
-            <svg class="bookmark" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-              <use xlink:href="#bookmark"></use>
-            </svg>
-            Mengenal Shell Script: Variable
-          </a>
-        </h2>
-        <div>9 Feb, 2020 <span class="min-read">3 min read</span></div>
-      </li>        
+      <div class="tags">
+        <strong aria-hidden="true">Tags: </strong>
+        <ul aria-label="tags">
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="https://millenito.github.io/tags/linux/">linux</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="https://millenito.github.io/tags/programming/">programming</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="https://millenito.github.io/tags/tutorial/">tutorial</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              
+              <a href="https://millenito.github.io/tags/shell-script/">shell-script</a>
+            </li>
+          
+        </ul>
+      </div>
     
-    </ul>
+    
+    
+      <nav class="toc" aria-labelledby="toc-heading">
+    <h2 id="toc-heading">Table of contents</h2>
+    <div class="toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prakata">Prakata</a></li>
+    <li><a href="#pengenalan-shell-scripting">Pengenalan Shell Scripting</a></li>
+    <li><a href="#variable">Variable</a>
+      <ul>
+        <li><a href="#mengisi-nilai-variable-dari-input">Mengisi Nilai Variable Dari Input</a></li>
+        <li><a href="#mengisi-nilai-variable-dari-output-sebuah-command">Mengisi Nilai Variable Dari Output Sebuah Command</a></li>
+        <li><a href="#mengisi-nilai-default-pada-variable-yang-undefined">Mengisi Nilai Default Pada Variable Yang undefined</a></li>
+      </ul>
+    </li>
+    <li><a href="#referensi">Referensi</a></li>
+  </ul>
+</nav>
+    </div>
+</nav>
+
+    
+
+    <h2 id="prakata">Prakata</h2>
+<p>Dahulu saya sering sekali menghindari belajar shell script, karena menurut saya akan lebih cepat jika hal-hal yang saya kerjakan dikerjakan secara manual daripada harus mempelajari bahasa baru terlebih dahulu, seringkali saya mencari script buatan orang dari internet untuk menyelesaikan masalah sederhana. Hingga akhirnya saya memutuskan untuk mempelajari dasar shell script untuk membuat script-script sederhana yang dapat membantu mempermudah pekerjaan dan keperluan saya sehari-hari.</p>
+<h2 id="pengenalan-shell-scripting">Pengenalan Shell Scripting</h2>
+<p>Shell script adalah bahasa yang digunakan oleh <strong>shell</strong> pada sistem operasi berbasis <em>UNIX</em> atau <em>UNIX-like</em> seperti linux, bsd, dan semacamnya untuk melakukan berbagai rangkaian perintah, seperti untuk keperluan automatisasi pekerjaan yang berulang atau pembuatan program atau perintah baru</p>
+<pre><code class="language-bash">#!/bin/sh
+# ini Comment!
+echo Hello World        # ini juga comment!
+</code></pre>
+<p>File yang berisi shell script biasanya diakhiri dengan extensi &ldquo;<strong>*.sh</strong>&rdquo; (<em><strong>tetapi tidak wajib</strong></em>), dan pada baris pertama nya harus terdapat <strong>shebang</strong>, yaitu karakter &ldquo;<strong>#!</strong>*&rdquo; diikuti dengan path executable shell yang ada pada komputer *-nix kita.</p>
+<p>Pada os GNU/Linux umumnya path tersebut berada di <code>/bin/sh</code> dan merupakan sebuah symlink terhadap <strong>bash</strong>, <strong>bash</strong> atau <em>Bourne Again Shell</em> adalah shell yang banyak dipakai dan menjadi standar shell default pada distribusi-distribusi linux saat ini</p>
+<h2 id="variable">Variable</h2>
+<p>Sama seperti bahasa pemograman yang lain, shell script juga mempunyai istilah <strong>variable</strong> yaitu suatu wadah yang diberi nama untuk menampung nilai yang nantinya nilai tersebut dapat dibaca, diubah, dan dimanupulasi</p>
+<pre><code class="language-bash">#!/bin/sh
+
+VARIABLE1=halo # TIDAK BOLEH ADA SPASI DIANTARA &quot;=&quot;
+echo $VARIABLE1 # halo
+
+VARIABLE2=&quot;halo dunia&quot;
+echo $VARIABLE2 # halo dunia
+</code></pre>
+<p>Pada contoh diatas menunjukan bahwa, <mark>pendefinisian variable tidak boleh menggunakan spasi sebelum dan sesudah tanda &ldquo;=&quot;</mark>.</p>
+<p>Sebuah variable juga hanya bisa menampung satu nilai, karena pada dunia UNIX semuanya dipisahkan oleh spasi untuk membuat perintah, <mark>maka untuk menyimpan nilai yang mengandung <em>white space</em> (spasi, tab dan semacamnya), nilai variable tersebut harus ada didalam petik 2 (&quot;)</mark>. petik 2 juga berguna untuk hal lain seperti menampilkan nilai sebagai apa adanya untuk beberapa karakter (kecuali $,&quot;,`,\),</p>
+<pre><code class="language-bash">#!/bin/sh
+
+NAMA=nito
+echo &quot;konnichiwa ${NAMA}-san!&quot; # konnichiwa nito-san
+</code></pre>
+<p>Jika kita ingin menggabungkan nilai dari variable dengan text <strong>string</strong> atau dengan command lain, variable tersebut <mark>harus dikelilingi oleh <strong>${}</strong> atau untuk menghindari terjadinya ambiguitas antara command lain</mark> saat shell meng-intrepretasi script kita</p>
+<h3 id="mengisi-nilai-variable-dari-input">Mengisi Nilai Variable Dari Input</h3>
+<p>Tidak seperti bahasa pemograman C, java, dan semacamnya, variable yang ada pada shell script tidak perlu di deklarasikan terlebih dahulu, variable yang dipanggil tanpa mempunyai nilai tidak akan menampilkan error melainkan nilai variable tersebut akan menjadi &quot;&rdquo; atau <em>empty string</em></p>
+<pre><code class="language-bash">#!/bin/sh
+
+echo $UNDEFINED # 
+UNDEFINED=&quot;sekarang udah ada isinya&quot;
+echo $UNDEFINED # sekarang udah ada isinya
+</code></pre>
+<p>Dengan command <code>read</code>, kita bisa membuat shell menerima input dari pengguna, nantinya input tersebut akan di simpan ke dalam sebuah variable</p>
+<pre><code class="language-bash">#!/bin/sh
+
+echo &quot;Masukan nama&quot;
+read NAMA
+echo &quot;Halo $NAMA selamat siang&quot;
+</code></pre>
+<h3 id="mengisi-nilai-variable-dari-output-sebuah-command">Mengisi Nilai Variable Dari Output Sebuah Command</h3>
+<p>Sebuah variable dapat diisi secara dinamis dari output sebuah perintah lain menggunakan <strong>backtick</strong> (`) yaitu karakter diatas tombol TAB dan sebelak kiri tombol 1, atau menggunakan <strong>$()</strong></p>
+<pre><code class="language-bash">#!/bin/sh
+
+LIST=`ls ~/Documents/`
+FileWithTimeStamp=~/Documents/file_$(/bin/date +%Y-%m-%d).txt
+</code></pre>
+<p>Pada contoh diatas nilai dari variable <strong>LIST</strong> adalah hasil output dari command <code>ls</code> dari directory &ldquo;Documents&rdquo;, begitupun juga dengan variable <strong>FileWithTimeStamp</strong> yang akan menjalankan command <code>/bin/date +%Y-%m-%d</code> untuk mendapatkan file terbaru dengan format tanggal tertentu</p>
+<h3 id="mengisi-nilai-default-pada-variable-yang-undefined">Mengisi Nilai Default Pada Variable Yang <em>undefined</em></h3>
+<p>Dalam sebuah script jika kita ingin mengisi variable yang kosong seringkali kita melakukan hal seperti ini</p>
+<pre><code class="language-bash">#!/bin/sh
+
+echo &quot;Masukan nama&quot;
+read NAMA
+
+if [ -z &quot;$NAMA&quot; ]; then
+NAMA=&quot;Budi&quot;
+fi
+
+echo &quot;Salam kenal $NAMA&quot;
+</code></pre>
+<p>Jika kita tidak mengisi apa-apa saat diminta masukan nama sehingga variable <code>$NAMA</code> menjadi kosong maka output yang akan keluar adalah <code>Salam kenal Budi</code>.</p>
+<p>Tetapi kita bisa membuat script tersebut lebih sederhana menggunakan kurung kurawal dan karakter &ldquo;<strong>:-</strong>&rdquo;</p>
+<pre><code class="language-bash">#!/bin/sh
+
+echo &quot;Masukan nama&quot;
+read NAMA
+
+echo &quot;Salam kenal ${NAMA:-Budi}&quot;
+</code></pre>
+<h2 id="referensi">Referensi</h2>
+<ul>
+<li><a href="https://www.learnshell.org/en/Variables">https://www.learnshell.org/en/Variables</a></li>
+<li><a href="https://www.shellscript.sh/variables1.html">https://www.shellscript.sh/variables1.html</a></li>
+</ul>
+
   </main>
+  <div id="disqus-container">
+  
+    <button id="disqus-button" onclick="showComments()">Show comments</button>
+    <div id="disqus-comments">
+      
+      
+      
+        <div id="disqus_thread">
+        </div>
+        <script type="application/javascript">
+          function showComments() {
+            // Config
+var disqus_config = function () {
+};
+// Build and append comments 
+var d = document;
+var s = d.createElement('script');
+s.async = true;
+s.src = '//' + "millenito" + '.disqus.com/embed.js';
+s.setAttribute('data-timestamp', + new Date());
+(d.head || d.body).appendChild(s);
+            // Remove button
+var disqusButton = document.getElementById('disqus-button');
+disqusButton.parentNode.removeChild(disqusButton); 
+// Un-hide comments
+var disqusComments = document.getElementById('disqus-comments');
+disqusComments.style.display = 'block'; 
+          }
+        </script>
+      
+      <noscript>Enable JavaScript to view Disqus comments.</noscript>
+    </div>
+  
+</div>
+
 
           <footer role="contentinfo">
   <div>

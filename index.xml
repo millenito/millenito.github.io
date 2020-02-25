@@ -32,13 +32,13 @@ Semenjak pindah ke OS Linux saya sempat kangen dengan fitur tersebut, tombol aja
     </item>
     
     <item>
-      <title>Mengenal Shell Script</title>
-      <link>https://millenito.github.io/mengenal-shell-script/</link>
+      <title>Mengenal Shell Script: Variable</title>
+      <link>https://millenito.github.io/mengenal-shell-script-variable/</link>
       <pubDate>Sun, 09 Feb 2020 00:50:19 +0700</pubDate>
       
-      <guid>https://millenito.github.io/mengenal-shell-script/</guid>
-      <description>Pengenalan Shell Scripting Shell script adalah bahasa yang digunakan oleh shell pada sistem operasi berbasis UNIX atau UNIX-like seperti linux, bsd, dan semacamnya untuk melakukan berbagai rangkaian perintah, seperti untuk keperluan automatisasi pekerjaan yang berulang atau pembuatan program atau perintah baru
-#!/bin/sh # ini Comment! echo Hello World # ini juga comment!  File yang berisi shell script biasanya diakhiri dengan extensi &amp;ldquo;*.sh&amp;rdquo; (tetapi tidak wajib), dan pada baris pertama nya harus terdapat shebang, yaitu karakter &amp;ldquo;#!</description>
+      <guid>https://millenito.github.io/mengenal-shell-script-variable/</guid>
+      <description>Prakata Dahulu saya sering sekali menghindari belajar shell script, karena menurut saya akan lebih cepat jika hal-hal yang saya kerjakan dikerjakan secara manual daripada harus mempelajari bahasa baru terlebih dahulu, seringkali saya mencari script buatan orang dari internet untuk menyelesaikan masalah sederhana. Hingga akhirnya saya memutuskan untuk mempelajari dasar shell script untuk membuat script-script sederhana yang dapat membantu mempermudah pekerjaan dan keperluan saya sehari-hari.
+Pengenalan Shell Scripting Shell script adalah bahasa yang digunakan oleh shell pada sistem operasi berbasis UNIX atau UNIX-like seperti linux, bsd, dan semacamnya untuk melakukan berbagai rangkaian perintah, seperti untuk keperluan automatisasi pekerjaan yang berulang atau pembuatan program atau perintah baru</description>
     </item>
     
   </channel>
