@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+	<head>
+		<title>My Name - DevOps Portfolio</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="css/terminal.css">
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div id="container">
+			<div id="top-nav">
+				<ul>
+					<li><a href="https://github.com/yourusername" target="_blank">GitHub</a></li>
+					<li><a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></li>
+					<li><a href="https://twitter.com/yourusername" target="_blank">Twitter</a></li>
+					<li class="right"><a href="mailto:your.email@example.com">Email</a></li>
+				</ul>
+			</div>
+
+			<!-- <h1 class="title">&gt; My Name</h1> -->
+            <h1 class="title">$ Lord Maxie Millenito</h1>
+			<img src="https://via.placeholder.com/128x128/333333/00ff00?text=Profile" class="logo self-portrait" alt="Profile" width="128" />
+			<p class="content">
+				Hey there! I'm a passionate DevOps engineer specializing in
+				cloud infrastructure, automation, and CI/CD pipelines.
+				<br>
+				<br>
+				I love building <span class="highlight">scalable systems</span> and
+				optimizing development workflows. My expertise spans across
+				AWS, Kubernetes, Terraform, and various automation tools.
+				<br>
+				<br>
+				Feel free to explore my portfolio using the terminal below
+				or click the quick command buttons to learn more about my
+				work and experience.
+				<br>
+			</p>
+
+			<div id="socials">
+				<button class="cmd-btn" data-command="about">About Me</button> |
+				<button class="cmd-btn" data-command="skills">Skills</button> |
+				<button class="cmd-btn" data-command="projects">Projects</button> |
+				<button class="cmd-btn" data-command="contact">Contact</button>
+			</div>
+			<div class="terminal-container shadow">
+				<div class="terminal-header">
+					<div class="terminal-controls">
+						<span class="control close"></span>
+						<span class="control minimize"></span>
+						<span class="control maximize"></span>
+					</div>
+					<div class="terminal-title">Terminal - devops@portfolio:~</div>
+				</div>
+				<div class="terminal-body">
+					<div class="terminal-output" id="terminal-output"></div>
+					<div class="terminal-input-line">
+						<span class="prompt">devops@portfolio:~$ </span>
+						<input type="text" class="terminal-input" id="terminal-input" autocomplete="off" spellcheck="false">
+					</div>
+				</div>
+			</div>
+			<pre class="footer"><code>
+DevOps Portfolio Terminal - Built with passion for automation and infrastructure
+&copy; <script>document.write(new Date().getFullYear())</script> - My Name
+			</code></pre>
+		</div>
+		<script src="js/data.js"></script>
+		<script src="js/commands.js"></script>
+		<script src="js/terminal.js"></script>
+	</body>
+</html>
