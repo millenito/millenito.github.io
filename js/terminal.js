@@ -15,9 +15,9 @@ class Terminal {
         this.setupCommandButtons();
         this.showPrompt();
         
-        // Auto-type welcome command after a brief delay
-        await this.delay(300);
-        this.autoTypeCommand('welcome');
+        // Auto-type ./millenito.sh command after a brief delay
+        await this.delay(100);
+        this.autoTypeCommand('./millenito.sh');
     }
 
     setupEventListeners() {
@@ -76,7 +76,7 @@ class Terminal {
 
         // Restore cursor animation
         this.terminalCode.classList.remove('no-animation');
-        await this.delay(500); // Brief pause before execution
+        await this.delay(400); // Brief pause before execution
 
         this.processCommand();
         this.isTyping = false;
@@ -115,14 +115,14 @@ class Terminal {
     finalizeCurrentCommand(command) {
         // Replace the current input prompt with the executed command
         let currentHTML = this.terminalCode.innerHTML;
-        const promptPattern = /<span[^>]*>devops@portfolio<\/span>:<span[^>]*>~<\/span><span[^>]*>\$<\/span>\s*<span[^>]*>[^<]*<\/span>$/;
+        const promptPattern = /<span[^>]*>guest@localhost<\/span>:<span[^>]*>~<\/span><span[^>]*>\$<\/span>\s*<span[^>]*>[^<]*<\/span>$/;
         
         if (promptPattern.test(currentHTML)) {
             currentHTML = currentHTML.replace(promptPattern, '');
         }
         
         // Add the executed command with colors
-        const commandHTML = `<span style="color: #50fa7b;">devops@portfolio</span>:<span style="color: #bd93f9;">~</span><span style="color: #f8f8f2;">$</span> <span style="color: #f8f8f2;">${command}</span><br>`;
+        const commandHTML = `<span style="color: #50fa7b;">guest@localhost</span>:<span style="color: #bd93f9;">~</span><span style="color: #f8f8f2;">$</span> <span style="color: #f8f8f2;">${command}</span><br>`;
         this.terminalCode.innerHTML = currentHTML + commandHTML;
     }
 
@@ -143,14 +143,14 @@ class Terminal {
     showPrompt() {
         // Remove the last prompt line if it exists (preserve colors by working with innerHTML)
         let currentHTML = this.terminalCode.innerHTML;
-        const promptPattern = /<span[^>]*>devops@portfolio<\/span>:<span[^>]*>~<\/span><span[^>]*>\$<\/span>\s*<span[^>]*>[^<]*<\/span>$/;
+        const promptPattern = /<span[^>]*>guest@localhost<\/span>:<span[^>]*>~<\/span><span[^>]*>\$<\/span>\s*<span[^>]*>[^<]*<\/span>$/;
         
         if (promptPattern.test(currentHTML)) {
             currentHTML = currentHTML.replace(promptPattern, '');
         }
         
         // Add prompt with proper styling using HTML
-        const promptHTML = `<span style="color: #50fa7b;">devops@portfolio</span>:<span style="color: #bd93f9;">~</span><span style="color: #f8f8f2;">$</span> <span style="color: #f8f8f2;">${this.currentInput}</span>`;
+        const promptHTML = `<span style="color: #50fa7b;">guest@localhost</span>:<span style="color: #bd93f9;">~</span><span style="color: #f8f8f2;">$</span> <span style="color: #f8f8f2;">${this.currentInput}</span>`;
         this.terminalCode.innerHTML = currentHTML + promptHTML;
         
         this.scrollToBottom();

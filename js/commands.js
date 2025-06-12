@@ -4,6 +4,7 @@ const commands = {
 
 Basic Commands:
   help          Show this help message
+  ./millenito.sh Show the welcome message
   welcome       Show the welcome message
   clear         Clear the terminal screen
   ls            List available commands and sections
@@ -16,6 +17,7 @@ Portfolio Commands:
   contact       Show contact information and social links
 
 Examples:
+  • Type './millenito.sh' to see the welcome message
   • Type 'about' to learn more about me
   • Type 'skills' to see my technical expertise
   • Type 'projects' to view my work
@@ -25,8 +27,18 @@ Tip: Use the up/down arrow keys to navigate command history!
 `;
     },
 
-    welcome: () => {
-        return `<span style="color: #bd93f9;">Welcome to Lord Maxie Millenito's DevOps Portfolio Terminal!</span>
+    "./millenito.sh": () => {
+return `                                           <span style="color: #bd93f9;">guest@localhost</span>
+                                           -----------------------------
+<span style="color: #bd93f9;">           _ _ _            _ _            </span><span style="color: #bd93f9;">Name:</span> Lord Maxie Millenito K
+<span style="color: #bd93f9;"> _ __ ___ (_) | | ___ _ __ (_) |_ ___      </span><span style="color: #bd93f9;">Based in:</span> Jakarta, Indonesia
+<span style="color: #bd93f9;">| '_ \` _ \\| | | |/ _ \\ '_ \\| | __/ _ \\     </span><span style="color: #bd93f9;">Email:</span> placeholder_url
+<span style="color: #bd93f9;">| | | | | | | | |  __/ | | | | || (_) |    </span><span style="color: #bd93f9;">Github:</span> placeholder_url
+<span style="color: #bd93f9;">|_| |_| |_|_|_|_|\\___|_| |_|_|\\__\\___/     </span><span style="color: #bd93f9;">LinkedIn:</span> placeholder_url
+                                           <span style="color: #bd93f9;">Instagram:</span> placeholder_url
+
+                                           <span style="color: #ff5555;">██</span><span style="color: #50fa7b;">██</span><span style="color: #f1fa8c;">██</span><span style="color: #bd93f9;">██</span><span style="color: #ff79c6;">██</span><span style="color: #8be9fd;">██</span><span style="color: #f8f8f2;">██</span><span style="color: #6272a4;">██</span>
+                                           <span style="color: #44475a;">██</span><span style="color: #282a36;">██</span><span style="color: #ffb86c;">██</span><span style="color: #ff5555;">██</span><span style="color: #50fa7b;">██</span><span style="color: #8be9fd;">██</span><span style="color: #f8f8f2;">██</span><span style="color: #6272a4;">██</span>
 
 <span style="color: #f8f8f2;">Type</span> <span style="color: #50fa7b;">'help'</span> <span style="color: #f8f8f2;">to see available commands or use the buttons above to explore:</span>
 <span style="color: #8be9fd;">•</span> <span style="color: #50fa7b;">'about'</span> <span style="color: #f8f8f2;">- Learn about me</span>
@@ -38,6 +50,10 @@ Tip: Use the up/down arrow keys to navigate command history!
 `;
     },
 
+    welcome: () => {
+        return commands["./millenito.sh"]();
+    },
+
     clear: () => {
         const terminal = document.getElementById('main-terminal');
         const terminalCode = terminal.querySelector('code');
@@ -47,17 +63,17 @@ Tip: Use the up/down arrow keys to navigate command history!
 
     ls: () => {
         return `<span style="color: #f8f8f2;">Available sections:</span>
-<span style="color: #f8f8f2;">about.txt</span>     <span style="color: #f8f8f2;">skills.txt</span>    <span style="color: #50fa7b;">projects/</span>     <span style="color: #f8f8f2;">contact.txt</span>   <span style="color: #f8f8f2;">resume.pdf</span>
+<span style="color: #f8f8f2;">about.txt</span>     <span style="color: #f8f8f2;">skills.txt</span>    <span style="color: #50fa7b;">projects/</span>     <span style="color: #f8f8f2;">contact.txt</span>   <span style="color: #f8f8f2;">resume.pdf</span>   <span style="color: #50fa7b;">millenito.sh</span>
 
 <span style="color: #f8f8f2;">Available commands:</span>
-<span style="color: #8be9fd;">help</span>  <span style="color: #8be9fd;">welcome</span>  <span style="color: #8be9fd;">clear</span>  <span style="color: #8be9fd;">ls</span>  <span style="color: #8be9fd;">whoami</span>  <span style="color: #8be9fd;">about</span>  <span style="color: #8be9fd;">skills</span>  <span style="color: #8be9fd;">projects</span>  <span style="color: #8be9fd;">contact</span>
+<span style="color: #8be9fd;">help</span>  <span style="color: #8be9fd;">./millenito.sh</span>  <span style="color: #8be9fd;">welcome</span>  <span style="color: #8be9fd;">clear</span>  <span style="color: #8be9fd;">ls</span>  <span style="color: #8be9fd;">whoami</span>  <span style="color: #8be9fd;">about</span>  <span style="color: #8be9fd;">skills</span>  <span style="color: #8be9fd;">projects</span>  <span style="color: #8be9fd;">contact</span>
 `;
     },
 
     whoami: () => {
         return `${portfolioData.about.name}
 ${portfolioData.about.title}
-Currently logged in as: devops@portfolio
+Currently logged in as: guest@localhost
 `;
     },
 
