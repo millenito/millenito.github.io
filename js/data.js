@@ -1,13 +1,13 @@
 const portfolioData = {
     about: {
-        name: "Your Name",
+        name: "Lord Maxie Millenito K",
         title: "DevOps Engineer",
         bio: `Hello! I'm a passionate DevOps engineer with expertise in cloud infrastructure,
 automation, and continuous integration/deployment. I love building scalable
 systems and optimizing development workflows.
 
 Experience: 3+ years in DevOps and Infrastructure
-Location: Remote / Your City
+Location: Jakarta, Indonesia
 Education: Bachelor's in Computer Science
 
 I'm passionate about:
@@ -60,20 +60,20 @@ I'm passionate about:
     ],
     
     contact: {
-        email: "your.email@example.com",
-        linkedin: "https://linkedin.com/in/yourprofile",
-        github: "https://github.com/yourusername",
+        email: "metrinito@gmail.com",
+        linkedin: "https://linkedin.com/in/millenito",
+        github: "https://github.com/millenito",
         twitter: "https://twitter.com/yourusername",
-        website: "https://yourwebsite.com"
+        website: "https://millenito.sh"
     },
     
-    currentDirectory: "/home/devops",
+    currentDirectory: "/home/guest",
     fileSystem: {
-        "/home/devops": {
+        "/home/guest": {
             type: "directory",
             contents: ["about.txt", "skills.txt", "projects/", "contact.txt", "resume.pdf"]
         },
-        "/home/devops/projects": {
+        "/home/guest/projects": {
             type: "directory",
             contents: ["project1.md", "project2.md", "project3.md"]
         }
