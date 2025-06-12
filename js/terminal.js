@@ -1,23 +1,29 @@
 class Terminal {
     constructor() {
-        this.output = document.getElementById('terminal-output');
-        this.input = document.getElementById('terminal-input');
+        this.terminal = document.getElementById('main-terminal');
+        this.terminalCode = this.terminal.querySelector('code');
         this.commandHistory = [];
         this.historyIndex = -1;
         this.isTyping = false;
+        this.currentInput = '';
 
         this.init();
     }
 
-    init() {
-        this.input.focus();
+    async init() {
         this.setupEventListeners();
         this.setupCommandButtons();
-        this.showWelcomeMessage();
+        this.showPrompt();
+        
+        // Auto-type welcome command after a brief delay
+        await this.delay(300);
+        this.autoTypeCommand('welcome');
     }
 
     setupEventListeners() {
-        this.input.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', (e) => {
+            if (this.isTyping) return;
+            
             if (e.key === 'Enter') {
                 this.processCommand();
             } else if (e.key === 'ArrowUp') {
@@ -26,13 +32,19 @@ class Terminal {
             } else if (e.key === 'ArrowDown') {
                 e.preventDefault();
                 this.navigateHistory('down');
+            } else if (e.key === 'Backspace') {
+                e.preventDefault();
+                this.currentInput = this.currentInput.slice(0, -1);
+                this.updatePrompt();
+            } else if (e.key.length === 1) {
+                e.preventDefault();
+                this.currentInput += e.key;
+                this.updatePrompt();
             }
         });
 
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.cmd-btn')) {
-                this.input.focus();
-            }
+        this.terminal.addEventListener('click', () => {
+            this.terminal.focus();
         });
     }
 
@@ -50,20 +62,20 @@ class Terminal {
         if (this.isTyping) return;
 
         this.isTyping = true;
-        this.input.focus();
-        this.input.value = '';
+        this.currentInput = '';
 
-        // Add typing class for visual feedback
-        this.input.classList.add('typing');
+        // Remove cursor animation while typing
+        this.terminalCode.classList.add('no-animation');
 
         // Type each character with delay
         for (let i = 0; i < command.length; i++) {
-            this.input.value += command[i];
+            this.currentInput += command[i];
+            this.updatePrompt();
             await this.delay(100); // 100ms delay between characters
         }
 
-        // Remove typing class and execute command
-        this.input.classList.remove('typing');
+        // Restore cursor animation
+        this.terminalCode.classList.remove('no-animation');
         await this.delay(500); // Brief pause before execution
 
         this.processCommand();
@@ -74,44 +86,78 @@ class Terminal {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    showWelcomeMessage() {
-        const welcomeMessage = `Welcome to my DevOps Portfolio Terminal!
-
-Type 'help' to see available commands or use the buttons above to explore:
-• 'about' - Learn about me
-• 'skills' - View my technical expertise
-• 'projects' - See my work samples
-• 'contact' - Get in touch
-
-Try clicking the command buttons above or type commands directly!
-
-`;
-        this.addOutput(welcomeMessage, 'welcome-message');
-    }
 
     processCommand() {
-        const command = this.input.value.trim();
+        const command = this.currentInput.trim();
 
         if (command) {
-            this.addOutput(`devops@portfolio:~$ ${command}`, 'command-line');
+            // Remove current prompt and add executed command with colors
+            this.finalizeCurrentCommand(command);
+            
             this.commandHistory.push(command);
             this.historyIndex = this.commandHistory.length;
 
             const result = executeCommand(command);
             if (result) {
-                this.addOutput(result, 'output-text');
+                // Check if result contains HTML tags
+                if (result.includes('<span')) {
+                    this.addToTerminalHTML(result + '\n');
+                } else {
+                    this.addToTerminal(result + '\n');
+                }
             }
         }
 
-        this.input.value = '';
+        this.currentInput = '';
+        this.showPrompt();
+    }
+
+    finalizeCurrentCommand(command) {
+        // Replace the current input prompt with the executed command
+        let currentHTML = this.terminalCode.innerHTML;
+        const promptPattern = /<span[^>]*>devops@portfolio<\/span>:<span[^>]*>~<\/span><span[^>]*>\$<\/span>\s*<span[^>]*>[^<]*<\/span>$/;
+        
+        if (promptPattern.test(currentHTML)) {
+            currentHTML = currentHTML.replace(promptPattern, '');
+        }
+        
+        // Add the executed command with colors
+        const commandHTML = `<span style="color: #50fa7b;">devops@portfolio</span>:<span style="color: #bd93f9;">~</span><span style="color: #f8f8f2;">$</span> <span style="color: #f8f8f2;">${command}</span><br>`;
+        this.terminalCode.innerHTML = currentHTML + commandHTML;
+    }
+
+    addToTerminal(text) {
+        // Escape HTML characters and preserve line breaks
+        const escapedText = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+        this.terminalCode.innerHTML += escapedText;
         this.scrollToBottom();
     }
 
-    addOutput(text, className = '') {
-        const line = document.createElement('div');
-        line.className = `output-line ${className}`;
-        line.textContent = text;
-        this.output.appendChild(line);
+    addToTerminalHTML(html) {
+        // Convert newlines to <br> tags for proper display
+        const formattedHTML = html.replace(/\n/g, '<br>');
+        this.terminalCode.innerHTML += formattedHTML;
+        this.scrollToBottom();
+    }
+
+    showPrompt() {
+        // Remove the last prompt line if it exists (preserve colors by working with innerHTML)
+        let currentHTML = this.terminalCode.innerHTML;
+        const promptPattern = /<span[^>]*>devops@portfolio<\/span>:<span[^>]*>~<\/span><span[^>]*>\$<\/span>\s*<span[^>]*>[^<]*<\/span>$/;
+        
+        if (promptPattern.test(currentHTML)) {
+            currentHTML = currentHTML.replace(promptPattern, '');
+        }
+        
+        // Add prompt with proper styling using HTML
+        const promptHTML = `<span style="color: #50fa7b;">devops@portfolio</span>:<span style="color: #bd93f9;">~</span><span style="color: #f8f8f2;">$</span> <span style="color: #f8f8f2;">${this.currentInput}</span>`;
+        this.terminalCode.innerHTML = currentHTML + promptHTML;
+        
+        this.scrollToBottom();
+    }
+
+    updatePrompt() {
+        this.showPrompt();
     }
 
     navigateHistory(direction) {
@@ -120,21 +166,25 @@ Try clicking the command buttons above or type commands directly!
         if (direction === 'up') {
             if (this.historyIndex > 0) {
                 this.historyIndex--;
-                this.input.value = this.commandHistory[this.historyIndex];
+                this.currentInput = this.commandHistory[this.historyIndex];
             }
         } else if (direction === 'down') {
             if (this.historyIndex < this.commandHistory.length - 1) {
                 this.historyIndex++;
-                this.input.value = this.commandHistory[this.historyIndex];
+                this.currentInput = this.commandHistory[this.historyIndex];
             } else {
                 this.historyIndex = this.commandHistory.length;
-                this.input.value = '';
+                this.currentInput = '';
             }
         }
+        this.updatePrompt();
     }
 
     scrollToBottom() {
-        this.output.scrollTop = this.output.scrollHeight;
+        // Use setTimeout to ensure DOM is updated before scrolling
+        setTimeout(() => {
+            this.terminal.scrollTop = this.terminal.scrollHeight;
+        }, 0);
     }
 }
 

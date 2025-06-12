@@ -1,9 +1,9 @@
 /**
- * DevOps Portfolio Terminal CSS
- * Based on ysap.sh design
+ * Terminal Portfolio CSS
+ * Sample terminal style with Dracula theme colors
  */
 
-/* dracula theme */
+/* dracula theme colors */
 :root {
 	--background: #282a36;
 	--current-line: #44475a;
@@ -29,7 +29,7 @@ ul {
 	list-style-type: none;
 }
 
-/* helper */
+/* helper classes */
 .center {
 	text-align: center;
 }
@@ -51,8 +51,8 @@ ul {
 }
 
 .shadow {
-	border: 1px solid rgba(189, 147, 249, 0.3); /* purple */
-	box-shadow: 0 0 200px rgba(189, 147, 249, 0.2);
+	border: 1px solid rgba(80, 250, 123, 0.3); /* green with opacity */
+	box-shadow: 0 0 200px rgba(80, 250, 123, 0.2);
 }
 
 @media (max-width: 650px) {
@@ -110,7 +110,7 @@ h1.title {
 
 #top-nav {
 	text-align: left;
-	border-bottom: 1px solid rgba(80, 250, 123, 0.3); /* green */
+	border-bottom: 1px solid rgba(80, 250, 123, 0.3); /* green with opacity */
 	margin-bottom: 21px;
 }
 
@@ -153,20 +153,22 @@ p.content {
 	margin-bottom: 10px;
 }
 
-/* Command buttons */
+/* Command buttons styling */
 .cmd-btn {
 	background: none;
 	border: none;
 	color: var(--cyan);
+	font-family: "Fira Mono", monospace;
+	font-size: 13px;
 	cursor: pointer;
-	font-family: inherit;
-	font-size: inherit;
-	text-decoration: underline;
-	transition: color 0.3s ease;
+	text-decoration: none;
+	padding: 0;
+	margin: 0;
 }
 
 .cmd-btn:hover {
 	color: var(--pink);
+	text-decoration: underline;
 }
 
 .footer {
@@ -174,188 +176,65 @@ p.content {
 	font-size: 12px;
 }
 
-/* Terminal Container - Dracula Style */
-.terminal-container {
-	width: 100%;
-	max-width: 900px;
-	height: 500px;
+/* terminal display - authentic dracula colors */
+pre.terminal {
+	padding: 10px;
 	background-color: var(--background);
-	border-radius: 8px;
-	border: 1px solid var(--current-line);
-	display: flex;
-	flex-direction: column;
-	margin: 20px auto;
+	min-height: 420px;
+	max-height: 420px;
+	overflow-x: auto;
+	overflow-y: auto;
+	line-height: 15px;
+	color: var(--foreground);
 }
 
-.terminal-header {
-	background-color: var(--current-line);
-	padding: 10px 15px;
-	border-radius: 8px 8px 0 0;
-	display: flex;
-	align-items: center;
-	border-bottom: 1px solid var(--selection);
+pre.terminal > code {
+	font-size: 13px;
 }
 
-.terminal-controls {
-	display: flex;
-	gap: 8px;
-}
-
-.control {
-	width: 12px;
+/* blinking cursor */
+pre.terminal > code::after {
+	content: "";
+	width: 6px;
 	height: 12px;
-	border-radius: 50%;
+	background: var(--foreground);
+	display: inline-block;
+	animation: cursor-blink 1.5s step-start infinite;
 }
 
-.control.close {
-	background-color: var(--red);
+.no-animation::after {
+	animation: none !important;
 }
 
-.control.minimize {
-	background-color: var(--yellow);
-}
-
-.control.maximize {
-	background-color: var(--green);
-}
-
-.terminal-title {
-	margin-left: 15px;
-	color: var(--comment);
-	font-size: 14px;
-}
-
-.terminal-body {
-	flex: 1;
-	padding: 20px;
-	overflow-y: auto;
-	display: flex;
-	flex-direction: column;
-	background-color: var(--background);
-}
-
-.terminal-output {
-	flex: 1;
-	overflow-y: auto;
-	margin-bottom: 10px;
-}
-
-.terminal-input-line {
-	display: flex;
-	align-items: center;
-	margin-top: auto;
-}
-
-.prompt {
-	color: var(--green);
-	margin-right: 5px;
-	user-select: none;
-}
-
-.terminal-input {
-	background: transparent;
-	border: none;
-	color: var(--foreground);
-	font-family: inherit;
-	font-size: inherit;
-	outline: none;
-	flex: 1;
-	caret-color: var(--pink);
-}
-
-.terminal-input:focus {
-	outline: none;
-}
-
-/* Terminal output styling - Dracula Style */
-.output-line {
-	margin-bottom: 5px;
-	line-height: 1.4;
-}
-
-.command-line {
-	color: var(--green);
-	margin-bottom: 5px;
-}
-
-.output-text {
-	color: var(--foreground);
-	white-space: pre-wrap;
-}
-
-.error-text {
-	color: var(--red);
-}
-
-.success-text {
-	color: var(--green);
-}
-
-.info-text {
-	color: var(--cyan);
-}
-
-.welcome-message {
-	color: var(--purple);
-	margin-bottom: 15px;
-}
-
-/* Auto-typing Animation */
-.typing {
-	border-right: 2px solid var(--pink);
-	animation: blink 1s infinite;
-}
-
-@keyframes blink {
-	0%, 50% {
-		opacity: 1;
-	}
-	51%, 100% {
+@keyframes cursor-blink {
+	50% {
 		opacity: 0;
 	}
+}
+
+/* ANSI color overrides */
+pre.terminal > code .ansi2 {
+	color: var(--comment);
 }
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
 	#container {
-		padding: 0 15px;
-	}
-	
-	#top-nav > ul > li {
-		float: none;
-		display: inline-block;
-	}
-	
-	#top-nav > ul > li.right {
-		float: none;
+		padding: 0 10px;
 	}
 	
 	.logo {
 		float: none;
 		display: block;
-		margin: 0 auto 20px auto;
-		text-align: center;
+		margin: 0 auto 20px;
 	}
 	
 	p.content {
-		text-align: center;
+		max-width: 100%;
 	}
 	
-	.terminal-container {
-		height: 400px;
-		margin: 10px;
-	}
-	
-	.terminal-body {
-		padding: 15px;
-		font-size: 12px;
-	}
-	
-	.terminal-header {
-		padding: 8px 12px;
-	}
-	
-	.terminal-title {
+	pre.terminal {
+		min-height: 300px;
 		font-size: 12px;
 	}
 }
