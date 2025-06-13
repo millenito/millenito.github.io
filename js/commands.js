@@ -56,7 +56,7 @@ const commands = {
 <span style="color: var(--cyan);">•</span> <span style="color: var(--green);">'skills'</span> <span style="color: var(--foreground);">- View my technical expertise</span>  
 <span style="color: var(--cyan);">•</span> <span style="color: var(--green);">'projects'</span> <span style="color: var(--foreground);">- See my work samples</span>
 <span style="color: var(--cyan);">•</span> <span style="color: var(--green);">'contact'</span> <span style="color: var(--foreground);">- Get in touch</span>
-<span style="color: var(--cyan);">•</span> <span style="color: var(--green);">'education'</span> <span style="color: var(--foreground);">- Show education background and certifications</span>
+<span style="color: var(--cyan);">•</span> <span style="color: var(--green);">'education'</span> <span style="color: var(--foreground);">- Show my background and certifications</span>
 
 <span style="color: var(--orange);">Try clicking the command buttons above or type commands directly!</span>
 `;

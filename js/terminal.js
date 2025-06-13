@@ -22,7 +22,11 @@ class Terminal {
 
     setupEventListeners() {
         document.addEventListener('keydown', (e) => {
-            if (this.isTyping) return;
+            // Prevent all keyboard interactions during auto-typing
+            if (this.isTyping) {
+                e.preventDefault();
+                return;
+            }
             
             if (e.key === 'Enter') {
                 this.processCommand();
@@ -52,6 +56,9 @@ class Terminal {
         const cmdButtons = document.querySelectorAll('.cmd-btn');
         cmdButtons.forEach(button => {
             button.addEventListener('click', (e) => {
+                // Prevent rapid clicks and interaction during auto-typing
+                if (this.isTyping) return;
+                
                 const command = e.target.getAttribute('data-command');
                 this.autoTypeCommand(command);
             });
@@ -79,6 +86,9 @@ class Terminal {
         await this.delay(400); // Brief pause before execution
 
         this.processCommand();
+        
+        // Add small delay to ensure command processing is complete before allowing new input
+        await this.delay(50);
         this.isTyping = false;
     }
 
