@@ -21,15 +21,16 @@ I’m passionate about:
     skills: {
          technical: [
             "Cloud Platforms: Alibaba Cloud, GCP, Huawei Cloud, Biznet GIO Cloud, Cloudflare",
-            `Cloud Managed Services: Load Balancing (CLB/SLB/ALB), Relational Database Service (RDS),\n    Object & Cloud Storage (OSS), Cloudflare R2`,
-            "Languages: PHP (Laravel, Yii, CodeIgniter), Go, Python, JavaScript (Vue), Bash/Shell,\n   Dart (Flutter), HTML/CSS",
+            // `Cloud Managed Services: Load Balancing (CLB/SLB/ALB), Relational Database Service (RDS),\n    Object & Cloud Storage (OSS), Cloudflare R2`,
+            `Cloud Managed Services: Load Balancing (CLB/SLB/ALB), Object & Cloud Storage (OSS), ECS, RDS`,
+            "Languages: PHP (Laravel, Yii, CodeIgniter), Go, Python, JavaScript (Vue), Bash/Shell,\n    Dart (Flutter), HTML/CSS",
             "Databases: Oracle, PostgreSQL, MySQL",
             "Scripting: Bash, Shell, Python",
             "Operating Systems: Linux (Ubuntu, CentOS, RHEL), Windows Server"
         ],
         tools: [
             "Monitoring & Reporting: Grafana, Loki, Sentry, Goaccess, Metabase, Pentaho Spoon",
-            "CI/CD Tools: GitHub Actio/ns, Jenkins, GitLab CI",
+            "CI/CD Tools: GitHub Actions, Jenkins, GitLab CI",
             "Containerization: Docker, Docker Compose",
             "Messaging & Queues: RabbitMQ, Redis",
             "Web Servers: Nginx, Apache, Caddy, Reverse Proxies",
@@ -42,7 +43,7 @@ I’m passionate about:
             description: `A multi-tenant logistics and invoicing system with connote entry, delivery tracking,
    and dynamic reporting. Built scalable APIs and dashboards, 
    deployed in a containerized environment.`,
-            technologies: ["Laravel", "Go", "Docker", "Redis", "GitHub Actions", "Cloudflare R2"],
+            technologies: ["Laravel", "Go", "Docker", "Redis", "GitHub Actions", "Cloudflare CDN", "Cloudflare R2"],
             site: "https://www.zolog.id",
         },
     ],
@@ -51,7 +52,7 @@ I’m passionate about:
         email: "metrinito@gmail.com",
         linkedin: "https://linkedin.com/in/millenito",
         github: "https://github.com/millenito",
-        website: "https://millenito.github.io"
+        website: "https://millenito.com"
     },
     education: {
         degree: "Bachelor's in Information Systems",
