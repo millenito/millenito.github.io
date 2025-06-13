@@ -29,7 +29,7 @@ I’m passionate about:
         ],
         tools: [
             "Monitoring & Reporting: Grafana, Loki, Sentry, Goaccess, Metabase, Pentaho Spoon",
-            "CI/CD Tools: GitHub Actions, Jenkins, GitLab CI",
+            "CI/CD Tools: GitHub Actio/ns, Jenkins, GitLab CI",
             "Containerization: Docker, Docker Compose",
             "Messaging & Queues: RabbitMQ, Redis",
             "Web Servers: Nginx, Apache, Caddy, Reverse Proxies",
