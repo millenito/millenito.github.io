@@ -4,7 +4,6 @@ const commands = {
 
 Basic Commands:
   help          Show this help message
-  ./millenito.sh Show the welcome message
   welcome       Show the welcome message
   clear         Clear the terminal screen
   ls            List available commands and sections
@@ -17,7 +16,7 @@ Portfolio Commands:
   contact       Show contact information and social links
 
 Examples:
-  • Type './millenito.sh' to see the welcome message
+  • Type 'welcome' to see the welcome message
   • Type 'about' to learn more about me
   • Type 'skills' to see my technical expertise
   • Type 'projects' to view my work
@@ -27,7 +26,7 @@ Tip: Use the up/down arrow keys to navigate command history!
 `;
     },
 
-    "./millenito.sh": () => {
+    welcome: () => {
         return `                                           <span style="color: var(--purple);">guest@localhost</span>
                                            ---------------
 <span style="color: var(--purple);">           _ _ _       </span><span style="color: var(--foreground);">     _ _            </span><span style="color: var(--purple);">Name:</span> ${portfolioData.about.name}
@@ -51,9 +50,6 @@ Tip: Use the up/down arrow keys to navigate command history!
 `;
     },
 
-    welcome: () => {
-        return commands["./millenito.sh"]();
-    },
 
     clear: () => {
         const terminal = document.getElementById('main-terminal');
@@ -64,10 +60,9 @@ Tip: Use the up/down arrow keys to navigate command history!
 
     ls: () => {
         return `<span style="color: var(--foreground);">Available sections:</span>
-<span style="color: var(--foreground);">about.txt</span>     <span style="color: var(--foreground);">skills.txt</span>    <span style="color: var(--green);">projects/</span>     <span style="color: var(--foreground);">contact.txt</span>   <span style="color: var(--foreground);">resume.pdf</span>   <span style="color: var(--green);">millenito.sh</span>
-
+<span style="color: var(--foreground);">about.txt</span>     <span style="color: var(--foreground);">skills.txt</span>    <span style="color: var(--green);">projects/</span>     <span style="color: var(--foreground);">contact.txt</span>   <span style="color: var(--foreground);">resume.pdf</span>   
 <span style="color: var(--foreground);">Available commands:</span>
-<span style="color: var(--cyan);">help</span>  <span style="color: var(--cyan);">./millenito.sh</span>  <span style="color: var(--cyan);">welcome</span>  <span style="color: var(--cyan);">clear</span>  <span style="color: var(--cyan);">ls</span>  <span style="color: var(--cyan);">whoami</span>  <span style="color: var(--cyan);">about</span>  <span style="color: var(--cyan);">skills</span>  <span style="color: var(--cyan);">projects</span>  <span style="color: var(--cyan);">contact</span>
+<span style="color: var(--cyan);">help</span>  <span style="color: var(--cyan);">welcome</span>  <span style="color: var(--cyan);">clear</span>  <span style="color: var(--cyan);">ls</span>  <span style="color: var(--cyan);">whoami</span>  <span style="color: var(--cyan);">about</span>  <span style="color: var(--cyan);">skills</span>  <span style="color: var(--cyan);">projects</span>  <span style="color: var(--cyan);">contact</span>
 `;
     },
 
@@ -100,7 +95,7 @@ Technical Skills:
             output += `  • ${tool}\n`;
         });
         
-        return `\n`+output;
+        return output;
     },
 
     projects: () => {
@@ -112,7 +107,7 @@ Technical Skills:
    ${project.description}
    
    Technologies: ${project.technologies.join(', ')}
-   GitHub: ${project.github}
+   Site: ${project.site}
 `;
         });
         

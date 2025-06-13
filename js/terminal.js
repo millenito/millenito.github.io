@@ -15,9 +15,9 @@ class Terminal {
         this.setupCommandButtons();
         this.showPrompt();
         
-        // Auto-type ./millenito.sh command after a brief delay
+        // Auto-type welcome command after a brief delay
         await this.delay(100);
-        this.autoTypeCommand('./millenito.sh');
+        this.autoTypeCommand('welcome');
     }
 
     setupEventListeners() {
